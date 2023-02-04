@@ -1,0 +1,137 @@
+﻿@using Blog_Entities
+@model List<Note>
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-3">
+            @Html.Partial("_PartialCategories")
+        </div>
+
+        <div class="col-md-9">
+
+            <div class="row carousel-holder">
+
+                <div class="col-md-12">
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img class="slide-image" src="https://via.placeholder.com/800x300" alt="">
+                            </div>
+                            <div class="item">
+                                <img class="slide-image" src="https://via.placeholder.com/800x300" alt="">
+                            </div>
+                            <div class="item">
+                                <img class="slide-image" src="https://via.placeholder.com/800x300" alt="">
+                            </div>
+                        </div>
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            @* Note bölümü : Notlar aşagıdaki bölümde listelenecek *@
+            <div class="row">
+                @foreach (Note note in Model)
+                {
+                    <div class="col-sm-4 col-lg-4 col-md-4" data-note-id="@note.Id">
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/320x150" alt="@note.Title">
+                            <div class="caption">
+
+                                <h4>
+                                    <a href="#" data-toggle="modal" data-target="#modal_note_detail" data-note-id="@note.Id">@note.Title</a>
+
+                                </h4>
+                                @if (note.Text.Length > 50)
+                                {
+                                    <p>@(note.Text.Substring(0,50) + "...")</p>
+                                    <p><a href="#" data-toggle="modal" data-target="#modal_note_detail" data-note-id="@note.Id">devamı <span class="glyphicon glyphicon-chevron-right"></span> </a> </p>
+                                }
+                                else
+                                {
+                                    @note.Text
+                                }
+                                <h6 class="text-right">
+                                    <span class="glyphicon glyphicon-user"> @note.Owner.Username </span>
+
+                                </h6>
+                                <h6 class="text-right">
+                                    <span class="glyphicon glyphicon-time"> @note.ModifiedDate </span>
+
+                                </h6>
+
+
+                            </div>
+                            <div><hr /></div>
+                            <div class="ratings">
+                                <p class="pull-right"><button class="btn- btn-default" data-toggle="modal" data-target="#modal_yorum" data-note-id="@note.Id"><span class="glyphicon glyphicon-comment"></span> Yorumlar</button></p>
+                                <p>
+                                    <button type="submit" class="btn btn-default btn-sm" data-liked="false" data-note-id="@note.Id">
+                                        <span class="glyphicon glyphicon-heart-empty like-heart"> </span>
+                                        <span class="like-count"> @note.LikeCount</span> @*bak*@
+                                    </button>
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+@* footer ismi layotu-tan geliyor *@
+@section footer{
+    @Html.Partial("_PartialFooter")
+}
+
+<!-- Modal -->
+<!-- Buraya Bootstrap içinde aldığım modal kodlarını ekliyorum. Ben bu kodları daha generic bir hale getirdim ve bunu HtmlHelper içinde tanımladım ve ilgili kodları da Bootstrap.cshtml içine yazdım.
+    Yukarıda yorumların açılacagı yorum butonuna özellik olarak
+    data-toggle="modal" data-target="#modal_yorum"   özelliklerini verdim
+    Burada data-target'a verdiğim isim ile modal içindeki id'nin aynı isme sahip olmassı gerekiyor. Bizim örneğimizde bu "modal_yorum" olarak verildi. -->
+@Bootstrap.ModalPopup("modal_yorum", "Yorumlar", true)
+@Bootstrap.ModalPopup("modal_note_detail", "Not", true)
+
+
+@* Comment ile ilgili işlemleri yapmak için Comment.cj dosyasını sayfanın sonuna ekliyoruz. *@
+<script src="~/js/Comment.js"></script>
+<script src="~/js/Like.js"></script>
+
+
+<script>
+    $(function () {
+        $('#modal_note_detail').on('show.bs.modal', function (e) {
+
+            var btn = $(e.relatedTarget);
+            noteId = btn.data("note-id");
+            $('#modal_note_detail_body').load('/Note/ShowNoteDetail/' + noteId)
+
+        })
+    })
+
+</script>
+

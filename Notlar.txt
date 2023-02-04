@@ -1,0 +1,28 @@
+1-asp net mvc projesi oluturduk.
+2-kullanacagýmýz katmanlarý oluþturduk.
+  -entities
+  -dataacces layer
+  -busiesslayer
+  -webuý
+
+3-entity claslarýný oluþtur
+   -Category
+   -Note (Blog Yazýlarý)
+   -Comment (Yorumlar)
+   -Liked (Begeniler)
+   -BlogUser (uygulamaya giren kullanan kullanýcýlarý tutmak için oluþturacagýz.
+
+4- Dataacceslayer katmanýnda 2tane kalsor oluþturuyoruz.
+    -Abstract: soyut sýnýflar ve interfaceler için
+    -EntityFramework: Repository, context, singleton classlarýmýz ve DBInitializer ismindeki database'i ilk oluþturuken fake verilerimizi oluþturacagýmýz claslrýmýzý tutacagýz.
+    -Context sýnýfýný oluþturabilmek için -dÝÐER KATMANLARDA kullanmak için- Entity Freameworku NuGet Packege' den yüklemem gerekiyor.(Dal katmanýna, webUI VE BL)
+    - ilgili katmanlarý referanslara ekledik her bir katman için
+    -Test sýnýfýný oluþturup,veritabanýný oluþturduk.
+
+5- FakeData'yý nuget'ten DataAccesLayer'a yüklüyoruz. 
+    -DbInitializer isimde bir class oluþturacagýz. bu class içine fake datalarýmýzýn veritabanýnda oluþmasý gereken kodlarý yazacagýz.
+
+6- Kullanacagýmýz Template'i projemize dahil ediyoruz. Css dosyalarýný Content'in içine taþýyoruz.
+
+https://getbootstrap.com/docs/3.3/components/
+

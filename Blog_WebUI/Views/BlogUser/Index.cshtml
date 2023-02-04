@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Blog_Entities.BlogUser>
+
+@{
+    ViewBag.Title = "Üye Listesi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row col-md-offset-1">
+        <h2>@ViewBag.Title</h2>
+
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Surname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Username)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserProfileImage)
+                    </th>
+                   
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsAdmin)
+                    </th>
+                   
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ModifiedDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ModifiedUserName)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Surname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Username)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserProfileImage)
+                        </td>
+                       
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsActive)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsAdmin)
+                        </td>
+                       
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ModifiedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ModifiedUserName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

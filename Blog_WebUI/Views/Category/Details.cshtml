@@ -1,0 +1,75 @@
+﻿@model Blog_Entities.Category
+
+@{
+    ViewBag.Title = "Kategori Detayları";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row col-md-offset-1">
+        <h2>@ViewBag.Title</h2>
+        <hr />
+
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+
+            <div>
+                <h4>Category</h4>
+              
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Title)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CreatedDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CreatedDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ModifiedDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ModifiedDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ModifiedUserName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ModifiedUserName)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @Bootstrap.LinkButton("/Category/Edit/" + Model.Id, "default", string.Empty, "Düzenle", string.Empty, "Düzenle")
+                @Bootstrap.LinkButton("/Category/Index/" , "primary", string.Empty, "Geriye Dön", string.Empty, "Geriye Dön")
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+

@@ -1,0 +1,6 @@
+C:\Users\AKSAM YAZILIM\source\repos\BlogMVC_Projesi_19122022\Blog_Common\bin\Debug\Blog_Common.dll
+C:\Users\AKSAM YAZILIM\source\repos\BlogMVC_Projesi_19122022\Blog_Common\bin\Debug\Blog_Common.pdb
+C:\Users\AKSAM YAZILIM\source\repos\BlogMVC_Projesi_19122022\Blog_Common\obj\Debug\Blog_Common.csproj.AssemblyReference.cache
+C:\Users\AKSAM YAZILIM\source\repos\BlogMVC_Projesi_19122022\Blog_Common\obj\Debug\Blog_Common.csproj.CoreCompileInputs.cache
+C:\Users\AKSAM YAZILIM\source\repos\BlogMVC_Projesi_19122022\Blog_Common\obj\Debug\Blog_Common.dll
+C:\Users\AKSAM YAZILIM\source\repos\BlogMVC_Projesi_19122022\Blog_Common\obj\Debug\Blog_Common.pdb
